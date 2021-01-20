@@ -7,7 +7,7 @@ import {Card} from '../../interfaces';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
-
+  @Input() increment = 1;
   @Input() data: Card = { };
 
   constructor() { }
