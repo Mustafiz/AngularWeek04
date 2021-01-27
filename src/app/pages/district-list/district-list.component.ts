@@ -9,6 +9,7 @@ import {DistrictService} from '../../common/services/district.service';
 })
 export class DistrictListComponent implements OnInit {
   public districtList: District[] =  [];
+  public numberOfDistrict = 0;
   constructor(private districtService: DistrictService) {
     this.setDistrictList();
   }
@@ -19,13 +20,31 @@ export class DistrictListComponent implements OnInit {
   private setDistrictList(): void{
 
     this.districtService.getDistrictList().then(res => {
-      if (res.serviceResult && res.serviceResult.success === true){
-        this.districtList = res.data;
+      if (res.serviceResult && res.serviceResult.success){
+        this.districtList = this.getRectifiedDistrict(res.data);
+        this.setNumberOfDistrict(this.districtList);
       }
       else {
-        console.log('Error', res);
+        console.error('Error', res);
       }
     });
   }
 
+  // get rectified districts
+  private getRectifiedDistrict(districtList: District[]): District[] {
+    for (const dist of districtList) {
+      dist.density = Math.floor(dist.population / dist.areaSqKm);
+    }
+    return districtList;
+  }
+
+  // get number of districts
+  private setNumberOfDistrict(arr: District[]): void {
+    this.numberOfDistrict = arr.length;
+  }
+
+  // re count district
+  public reCount(event: number): void {
+    this.numberOfDistrict = this.districtList.length;
+  }
 }

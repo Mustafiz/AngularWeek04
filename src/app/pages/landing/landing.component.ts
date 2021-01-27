@@ -26,22 +26,22 @@ export class LandingComponent implements OnInit {
   private setStudentList(): void{
 
     this.studentService.getStudentList().then(res => {
-      if (res.serviceResult && res.serviceResult.success === true){
+      if (res.serviceResult && res.serviceResult.success){
         this.studentList = res.data;
       }
       else {
-        console.log('Error', res);
+        console.error('Error', res);
       }
     });
   }
 
   private setTeacherList(): void{
     this.teacherService.getTeacherList().then(res => {
-      if (res.serviceResult && res.serviceResult.success === true){
+      if (res.serviceResult && res.serviceResult.success){
         this.teacherList = res.data;
       }
       else {
-        console.log('Error', res);
+        console.error('Error', res);
       }
     });
   }

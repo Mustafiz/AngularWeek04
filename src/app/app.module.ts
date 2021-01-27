@@ -13,6 +13,8 @@ import { HttpService, StudentService, TeacherService, UrlService, DistrictServic
 import { HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { DistrictListComponent } from './pages/district-list/district-list.component';
+import { TableComponent } from './shared/component/table/table.component';
+import { BdLocalPipe } from './shared/pipes/bd-local.pipe';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { DistrictListComponent } from './pages/district-list/district-list.compo
     BoxListComponent,
     PageNotFoundComponent,
     DistrictListComponent,
+    TableComponent,
+    BdLocalPipe,
   ],
   imports: [
     BrowserModule,

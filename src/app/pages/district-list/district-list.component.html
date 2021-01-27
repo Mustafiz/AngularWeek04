@@ -2,31 +2,10 @@
   <div class="row">
     <div class="col">
       <div class="page-header py-3 mx-auto text-center pt-5 pb-2">
-        <h1 class="display-4">Districts List of Bangladesh</h1>
+        <h1 class="display-4">Districts of Bangladesh: {{ numberOfDistrict }}</h1>
       </div>
       <div class="table-responsive mt-4">
-        <table class="table table-hover table-bordered table-striped">
-          <thead>
-          <tr>
-            <th scope="col">SL</th>
-            <th scope="col">Name</th>
-            <th scope="col">Division</th>
-            <th scope="col">Established</th>
-            <th scope="col">Population</th>
-            <th scope="col">Area (sq.km)</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let district of districtList; let i = index">
-            <td scope="row">{{ i + 1 }}</td>
-            <td>{{ district.name }}</td>
-            <td>{{ district.division }}</td>
-            <td>{{ district.established }}</td>
-            <td>{{ district.population}}</td>
-            <td>{{ district.areaSqKm}}</td>
-          </tr>
-          </tbody>
-        </table>
+        <app-table [districtList]="districtList" (rowRemoved)="reCount($event)"></app-table>
       </div>
     </div>
   </div>
