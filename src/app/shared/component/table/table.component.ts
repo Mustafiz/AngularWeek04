@@ -8,6 +8,7 @@ import {District} from '../../interfaces';
 })
 export class TableComponent implements OnInit {
   @Input() districtList: District[] = [];
+  @Input() tableHeaderColor = '';
   @Output() rowRemoved = new EventEmitter<number>();
   constructor() { }
 

@@ -1,6 +1,14 @@
 .tdDelete i {
   cursor: pointer;
+  color: darkred;
 }
-.tdDelete i:hover {
-  color: red;
+
+.green {
+  color: white;
+  background-color: #3B8D45;
+}
+
+.red {
+  color: white;
+  background-color: #A53B30;
 }

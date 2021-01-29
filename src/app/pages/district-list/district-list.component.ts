@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {District} from '../../shared/interfaces';
 import {DistrictService} from '../../common/services/district.service';
 
@@ -8,8 +8,11 @@ import {DistrictService} from '../../common/services/district.service';
   styleUrls: ['./district-list.component.css']
 })
 export class DistrictListComponent implements OnInit {
-  public districtList: District[] =  [];
+  public districtList: District[] = [];
+  public deletedDistrictList: District[] = [];
   public numberOfDistrict = 0;
+  public deletedNumberOfDistrict = 0;
+
   constructor(private districtService: DistrictService) {
     this.setDistrictList();
   }
@@ -43,8 +46,10 @@ export class DistrictListComponent implements OnInit {
     this.numberOfDistrict = arr.length;
   }
 
-  // re count district
+  // re count number of district
   public reCount(event: number): void {
     this.numberOfDistrict = this.districtList.length;
+    this.deletedDistrictList.push(this.districtList[event]);
+    this.deletedNumberOfDistrict = this.deletedDistrictList.length;
   }
 }

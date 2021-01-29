@@ -5,7 +5,13 @@
         <h1 class="display-4">Districts of Bangladesh: {{ numberOfDistrict }}</h1>
       </div>
       <div class="table-responsive mt-4">
-        <app-table [districtList]="districtList" (rowRemoved)="reCount($event)"></app-table>
+        <app-table [tableHeaderColor]="'green'" [districtList]="districtList" (rowRemoved)="reCount($event)"></app-table>
+      </div>
+      <div class="page-header py-3 mx-auto text-center pt-5 pb-2" *ngIf="deletedNumberOfDistrict != 0">
+        <h1 class="display-4">Deleted Districts of Bangladesh: {{ deletedNumberOfDistrict }}</h1>
+      </div>
+      <div class="table-responsive mt-4" *ngIf="deletedNumberOfDistrict != 0">
+        <app-table [tableHeaderColor]="'red'" [districtList]="deletedDistrictList"></app-table>
       </div>
     </div>
   </div>
